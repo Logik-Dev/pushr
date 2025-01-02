@@ -48,11 +48,11 @@ pub enum Priority {
 #[group(required = true, multiple = false)]
 pub struct Token {
     /// Token used for authentication
-    #[arg(short = 'k', long)]
+    #[arg(short = 'k', long, env = "PUSHOVER_TOKEN")]
     pub token: Option<String>,
 
     /// File containing the token used for authentication
-    #[arg(short = 'K', long, value_name = "PATH", env = "PUSHOVER_TOKEN")]
+    #[arg(short = 'K', long, value_name = "PATH", env = "PUSHOVER_TOKEN_FILE")]
     pub token_file: Option<PathBuf>,
 }
 
@@ -60,10 +60,10 @@ pub struct Token {
 #[group(required = true, multiple = false)]
 pub struct User {
     /// User id
-    #[arg(short, long)]
+    #[arg(short, long, env = "PUSHOVER_USER")]
     pub user: Option<String>,
 
     /// File containing the user id used for authentication
-    #[arg(short = 'U', long, env = "PUSHOVER_USER")]
+    #[arg(short = 'U', long, env = "PUSHOVER_USER_FILE")]
     pub user_file: Option<PathBuf>,
 }
